@@ -1,5 +1,5 @@
 {
-  "name": "penny-s-2025",
+  "name": "penny-s-2025-app",
   "private": true,
   "scripts": {
     "dev": "vite",
