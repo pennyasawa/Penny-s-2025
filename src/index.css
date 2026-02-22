@@ -1,0 +1,192 @@
+@import url('https://fonts.googleapis.com/css2?family=Caveat:wght@400;500&family=DM+Sans:wght@400;500;600&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  /* Warm nostalgic theme - cream and warm tones */
+  --background: 35 25% 92%; /* Warm cream background */
+  --foreground: 25 15% 20%; /* Warm dark brown text */
+  
+  --card: 40 30% 96%; /* Off-white cream for cards */
+  --card-foreground: 25 15% 20%;
+  
+  --popover: 40 30% 96%;
+  --popover-foreground: 25 15% 20%;
+  
+  --primary: 25 60% 45%; /* Warm terracotta */
+  --primary-foreground: 40 30% 96%;
+  
+  --secondary: 35 20% 85%; /* Light warm beige */
+  --secondary-foreground: 25 15% 30%;
+  
+  --muted: 35 15% 75%;
+  --muted-foreground: 25 10% 45%;
+  
+  --accent: 25 60% 50%; /* Warm orange accent */
+  --accent-foreground: 40 30% 96%;
+  
+  --destructive: 0 65% 50%;
+  --destructive-foreground: 0 0% 100%;
+
+  --border: 35 15% 80%;
+  --input: 35 20% 88%;
+  --ring: 25 60% 45%;
+  
+  --radius: 0.75rem;
+}
+
+.dark {
+  --background: 25 15% 12%; /* Warm dark brown */
+  --foreground: 35 25% 92%; /* Cream text */
+  
+  --card: 25 15% 16%;
+  --card-foreground: 35 25% 92%;
+  
+  --popover: 25 15% 18%;
+  --popover-foreground: 35 25% 92%;
+  
+  --primary: 25 60% 55%;
+  --primary-foreground: 25 15% 12%;
+  
+  --secondary: 25 15% 22%;
+  --secondary-foreground: 35 20% 80%;
+  
+  --muted: 25 10% 30%;
+  --muted-foreground: 35 15% 60%;
+  
+  --accent: 25 60% 55%;
+  --accent-foreground: 25 15% 12%;
+  
+  --border: 25 12% 25%;
+  --input: 25 15% 20%;
+  --ring: 25 60% 55%;
+}
+
+@layer base {
+  body {
+    @apply bg-background text-foreground antialiased;
+    font-family: 'DM Sans', sans-serif;
+  }
+
+  /* Handwriting font for polaroid captions */
+  .font-handwriting {
+    font-family: 'Caveat', cursive;
+  }
+
+  /* Boarding pass texture */
+  .boarding-pass-texture {
+    background-color: #f8f5f0;
+    background-image: 
+      url("data:image/svg+xml,%3Csvg width='100' height='100' viewBox='0 0 100 100' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.03'/%3E%3C/svg%3E");
+    position: relative;
+  }
+
+  .dark .boarding-pass-texture {
+    background-color: #2a2522;
+  }
+}
+
+@layer utilities {
+  /* Perforation dots for boarding pass */
+  .perforation {
+    background-image: 
+      radial-gradient(circle at center, transparent 3px, currentColor 3px, currentColor 4px, transparent 4px);
+    background-size: 12px 100%;
+    background-repeat: repeat-y;
+  }
+
+  .perforation-horizontal {
+    background-image: 
+      radial-gradient(circle at center, transparent 3px, currentColor 3px, currentColor 4px, transparent 4px);
+    background-size: 100% 12px;
+    background-repeat: repeat-x;
+  }
+
+  /* Soft cinematic shadow for boarding passes */
+  .boarding-pass-shadow {
+    box-shadow: 
+      0 4px 6px -1px rgba(0, 0, 0, 0.05),
+      0 10px 20px -5px rgba(0, 0, 0, 0.08),
+      0 30px 40px -10px rgba(0, 0, 0, 0.1);
+  }
+
+  .boarding-pass-shadow-hover {
+    box-shadow: 
+      0 8px 12px -2px rgba(0, 0, 0, 0.08),
+      0 20px 30px -10px rgba(0, 0, 0, 0.12),
+      0 40px 60px -15px rgba(0, 0, 0, 0.15);
+  }
+
+  /* Modal overlay backdrop */
+  .memory-backdrop {
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+  }
+
+  /* Smooth cinematic animation timing */
+  .cinematic-ease {
+    transition-timing-function: cubic-bezier(0.22, 1, 0.36, 1);
+  }
+
+  /* Barcode animation */
+  @keyframes barcode-shimmer {
+    0%, 100% { opacity: 0.6; }
+    50% { opacity: 0.8; }
+  }
+
+  .barcode-shimmer {
+    animation: barcode-shimmer 3s ease-in-out infinite;
+  }
+
+  /* Stagger animation for grid items */
+  @keyframes fadeInUp {
+    from {
+      opacity: 0;
+      transform: translateY(20px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  .animate-fade-in-up {
+    animation: fadeInUp 0.6s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+  }
+
+  /* Memory modal photo animation */
+  @keyframes photoReveal {
+    from {
+      opacity: 0;
+      transform: scale(0.95);
+    }
+    to {
+      opacity: 1;
+      transform: scale(1);
+    }
+  }
+
+  .animate-photo-reveal {
+    animation: photoReveal 0.5s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+  }
+}
+
+/* Custom scrollbar for memory modal */
+.memory-scroll::-webkit-scrollbar {
+  width: 6px;
+}
+
+.memory-scroll::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.memory-scroll::-webkit-scrollbar-thumb {
+  background: hsl(var(--muted));
+  border-radius: 3px;
+}
+
+.memory-scroll::-webkit-scrollbar-thumb:hover {
+  background: hsl(var(--muted-foreground));
+}
